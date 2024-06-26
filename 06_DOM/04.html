@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Chapter-4</title>
+</head>
+<body style = "background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>JavaScript</li>
+    </ul>
+</body>
+<script>
+    // adding ListItem in the document
+    function addLanguage(langName){
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("TypeScript");
+
+
+    function addOptimzLanguage(langName){
+        const li = document.createElement('li');
+        // const addText = document.createtextNode(langName);
+
+        // saving traversing again & again
+        li.appendChild(document.createtextNode(langName));
+
+        document.querySelector('.language').appendChild(li);
+    }
+
+
+    // Edit
+    // to edit, first we need to select
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // secondLang.innerHTML = 'JoJo';
+
+    const newLi = document.createElement('li');
+    newLi.textContent = "JoJo";
+    secondLang.replaceWith(newLi);
+
+
+    // edit
+    const firstLang = document.querySelector('li:first-child');
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+
+    // remove
+    const lastang = document.querySelector('li:last-child')
+    lastang.remove();
+
+</script>
+</html>

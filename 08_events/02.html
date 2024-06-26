@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Timeout & Interval</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    // handler is also a call back fn
+
+    // executes only once after a certain period of time
+    // setTimeout(function(){
+    //     console.log('Jai Siya Raam');
+    // }, 2000);
+
+
+    // const saySiyaRaam = function(){
+    //     console.log('Jai SIya Raam');
+    // }
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = 'Kamaal JS Series'
+
+    }
+
+    // setTimeout(saySiyaRaam, 2000);
+    // setTimeout(changeText, 2000);
+
+
+    
+    /*
+        clearTimeout()
+    */
+   const changeMe = setInterval(changeText, 2000);
+
+//    clearTimeout(changeMe ); 
+
+   document.querySelector('#stop').addEventListener('click', (e) => {
+    clearTimeout(changeMe);
+   })
+
+
+
+</script>
+</html>

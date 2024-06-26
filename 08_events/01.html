@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events </title>
+</head>
+<body style="background-color: #313131; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <!-- this approach is not scalable -->
+            <!-- <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="alert('ullu ka pattha')" ></li> -->
+
+
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // in js, all events run sequentially
+    // except async ones
+
+    // document.getElementById('owl').onclick = function(){
+    //     alert('ullu ka pattha')
+    // }
+
+    // eventListener gives propagation ability
+
+
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert('phir se ullu ka pattha')
+    // })
+
+
+    // attachEvent() // for IE (yes, the ancient one)
+    // jQuery - on
+
+    // what to study?
+    // event types, timestamp, defaultPrevented
+    // target, toElement, secElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+
+    // document.getElementById('owl').addEventListener('click', function(e ){
+    //     console.log(e );
+    // }, false) // false is default parameter
+    
+    
+    
+    // Event Propagation
+    // two context -> bubbling & capturing
+    
+    // document.getElementById('images').addEventListener('click', function(e ){
+    //     console.log('clicked inside the url');
+    // }, true) 
+    // document.getElementById('owl').addEventListener('click', function(e ){
+        //     console.log('ullu clicked');
+        
+        // }, true) 
+        
+        // for false (bubble)
+        // ullu clicked
+        // inside url
+        
+        // for true (capture)
+        // inside url
+    // ullu clicked
+    
+    
+    // false -> bubble goes from  bottom to top
+    // true -> capture
+
+    
+/*
+    document.getElementById('images').addEventListener('click', function(e ){
+        console.log('clicked inside the url');
+    }, false) 
+    document.getElementById('owl').addEventListener('click', function(e ){
+        console.log('ullu clicked');
+        e.stopPropagation(); 
+    }, false) 
+    
+    document.getElementById('google').addEventListener('click', function(e){
+        
+        // to prevent bubbling  
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('google clicked');
+        
+    }, false)
+
+*/
+
+
+  document.querySelector('#images').addEventListener('click', function(e){
+    console.log(e.target.tagName); // output in uppercase 
+    // console.log(e.target.parentNode);
+    
+    if(e.target.tagName === 'IMG'){
+        console.log(e.target.id);
+        let removeIt = e.target.parentNode;
+        removeIt.remove();
+    }
+
+
+    // we have two approaches for it
+    
+    // 1st Approach
+    // removeIt.remove();
+
+    // 2nd Approach
+    // removeIt.parentNode.removeChild(removeIt);
+
+
+    // but if we clicked on 'li' then it will remove 'ul' completely as parentNode
+
+  }, false)  
+
+
+</script>
+</html>

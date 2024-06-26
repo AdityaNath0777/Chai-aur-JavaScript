@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Chapter-3</title>
+</head>
+<body style="background-color: #313131; color: #fff">
+    
+</body>
+<script>
+    const div = document.createElement('div')
+    console.log(div);
+
+    // everything is NodeList inside NodeList 
+    // but values are not set
+    // what??????????
+
+    div.className = "main"
+    div.id = Math.round(Math.random() * 10 + 1)
+    div.setAttribute("title", "generated title")
+    div.style.padding = "12px"
+    // div.innerHTML = "HiroPanti"
+    // div.innerText = "HiroPanti"
+
+
+    // setAttribut -> directly sets attr
+    // innerHTML -> overwrite, first bring reference then overWrite it
+
+    // this saves round trip
+    const addText = document.createTextNode("HiroPanti")
+
+    div.appendChild(addText)
+
+    // Now, finally the changes will be visible
+    document.body.appendChild(div)
+</script>
+</html>

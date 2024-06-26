@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+    <style>
+        .bg-black{
+            background-color: #313131;
+            color: #fff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-black">
+        <h1 id="title" class="heading">Lorem ipsum dolor sit <span style="display: none;" >test text</span> amet.</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+
+        <ul>
+            <li class="list-item" >list: 01</li>
+            <li class="list-item" >list: 02</li>
+            <li class="list-item" >list: 03</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+<!-- 
+
+
+    scripts to explore
+
+    conosole.log(window)
+    conosole.log(window.document)
+    conosole.log(document)
+    conosole.dir(document) // log a directory of an object
+    // allows you to see all of the properties and methods of an object.
+    
+    conosole.log(document.baseURI)
+    conosole.log(document.links) // HTML collection, not an Array but can be converted into one
+    conosole.log(document.links[2])
+
+
+
+
+
+    
+    document.getElementById('firstHeading')
+
+    document.getElementById('firstHeading').innerHTML = "<h1>Jai Mata Di</h1?"
+
+    document.querySelector('.list-item') // for class
+    document.querySelector('#title')     // id
+    document.querySelector('input[type="password"]') 
+    
+// any other selector, similar to CSS selectors
+        h1, h2, p, span, input, p:first-child, nth-child, etc
+
+ -->
+ <script>
+    let nodeClassList = document.querySelectorAll('.list-item'); // returns NodeList
+    // in NodeList -> forEach method is possible
+            // but not map, reduce
+
+
+    let tempClassList = document.getElementByClassName('list-item');
+    // tempClassList -> HTMLCollection, Not an Array
+        // it does not have forEach, map, filter attributes
+
+    // thus first we'll convert HTMLCollection into an Array
+    let arrClassList = Array.from(tempClassList);
+
+    // now we can use forEach like functions
+    arrClassList.forEach(function(li){
+        li.style.backgroundColor = 'red';
+        li.style.color = 'green';
+        li.style.padding = '10px';
+    })
+
+
+ </script>

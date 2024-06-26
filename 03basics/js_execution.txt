@@ -1,0 +1,75 @@
+whenerver we run a JS file
+first it will make Global EC
+1) Global Execution context
+        assigned 'this',
+        Browser, node, bun have their own different object
+        i.e. diff environment -> diff context
+
+        // whether they have some value of not
+
+* JS is single threaded -> everything is a process     
+
+2) Function Execution Context
+3) Eval Execution Context
+
+A JS code runs in phases
+
+1) Memory Creation phase (or just Creation phase), 
+        // resrc allocation for variables
+
+2) Execution Phase
+
+        for e.g. we have a JS code
+
+        let val1 = 10
+        let val2 = 8
+        function addNum(num1, num2){
+                let total = num1 + num2;
+                return total;
+        }
+
+        let result1 = addNum(val1, val2)
+        let result2 = addNum(10, 6)
+
+
+// first cycle
+Step 1) Global EC -> allocated in this
+
+Step 2) Memory Phase -> val1 <- undefined
+                        val2 <- undefined
+                        addNum <- fn definition
+                        result1 <- undefined
+                        result2 <- undefined
+
+// second cycle
+Step 3) Execution Phase
+        val1 <- 10
+        val2 <- 8
+        addNum -> makes it's own EC (exec context)
+        // new Executional context created
+        // everytime a function is executed // sandbox
+       ----------------------------------------
+        || new variable environment (env)   ||
+        ||       +                          ||
+        ||   Execution Thread               ||
+        ||                                  ||
+        ||                                  ||
+       ----------------------------------------
+       
+Memory Phase
+val1 -> undefined
+val2 -> undefined
+total -> undefined
+Execution Phase
+ num1        
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+        |
+
+        

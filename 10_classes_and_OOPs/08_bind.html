@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My React using Bind</title>
+</head>
+
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React {
+        constructor() {
+            this.library = "React";
+            this.server = "https://localhost:3000";
+
+            // requirement
+            // -> on button Clicked we got some sign
+
+            document
+                .querySelector('button')
+                .addEventListener('click', this.handleClick.bind(this)) 
+            // The bind(this) part ensures that the this inside handleClick refers to the instance of the React class.
+            // Without bind(this), this would refer to the button element that was clicked, not the instance of the React class.
+
+            /*
+                * The first this refers to the instance of the React class, allowing access to the handleClick method.
+                * The second this ensures that the newly created function will have the correct this context.
+            */
+
+            // document
+            //     .querySelector('button')
+            //     .addEventListener('click', this.handleClick)
+
+        }
+
+        handleClick() {
+            console.log("button Clicked");
+            // console.log(this.server);
+            console.log(this); // yahan pe to 'this' ka new reference ban raha hai
+            console.log(this.server);
+        }
+    }
+
+    const app = new React()
+
+
+
+    /*
+        * bind(this) returns a new function with this bound to the provided value. 
+                    It does not call the function immediately.
+        * call(this) calls the function immediately with this set to the provided value.
+    */
+</script>
+
+</html>

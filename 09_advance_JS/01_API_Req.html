@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIs : XMLHTTPRequest</title>
+</head>
+
+<body>
+    <pre>
+
+        <code>
+    // before fetch there was xmlHTTPRequest
+    
+    // states in XMLHTTPRequest
+     => Extensible Markup Language (XML)
+    /**
+     * 0 -> unsent           -> client has been created. 
+     *                          <strong>open() not called</strong>  yet
+     * 1 -> opened           -> <strong>open() called</strong>   -> request has been sent
+     * 2 -> Headers_RECEIVED -> <strong>send()</strong> been called
+     * 3 -> LOADING          -> download the response
+     *                          <strong>responseText</strong> holds partial data
+     * 4 -> DONE             -> The operation is complete
+     */
+        </code>
+    </pre>
+</body>
+<script>
+
+    const reqURL = 'https://api.github.com/users/AdityaNath0777'
+
+    // new object of XHR class 
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', reqURL)
+    // console.log(xhr.readyState);
+    
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState === 4){
+            // response in text format
+            // this -> for current context
+            console.log(this.responseText);
+            
+            // const data = this.responseText; // string type
+            const data = JSON.parse(this.responseText); // string to JSON
+            
+            console.log(typeof data);
+            // console.log(data.followers);
+            console.log(data.public_repos);
+            // console.log(data["public_repos"]);
+        }
+    }
+    
+    xhr.send( ) // now open() has been called
+    // console.log(xhr.readyState); // 1, why? not cnts track of states
+    console.log(xhr); //
+    
+    
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure and Lexical Scope</title>
+</head>
+
+<body style="background-color: #313131;">
+    <button id="green">Green</button>
+    <button id="orange">Orange</button>
+</body>
+<script>
+    // normal way
+    // document.getElementById('orange').onclick = function(){
+    //     document.body.style.backgroundColor = `orange`;
+    // }
+    // document.getElementById('green').onclick = function(){
+    //     document.body.style.backgroundColor = `green`;
+    // }
+
+    // function clickHandler(color){
+    //     document.body.style.backgroundColor = `${color}`;
+    // }
+    // // document.getElementById('green').onclick = clickHandler; // giving it fn reference
+    // // but it want executable fn
+
+    // // here -> fn executes then the return value goes to 'onclick'
+    // document.getElementById('orange').onclick = clickHandler('orange');
+    // // it means click doesn't trigger fn execution, as it has been already executed
+    
+    
+    
+    // to solve it we use closure and lexical scope
+    function clickHandler(color) {
+        
+        return function () {
+            document.body.style.backgroundColor = `${color}`;
+            
+        }
+    }
+
+    // Now it's working fine
+    document.getElementById('orange').onclick = clickHandler('orange');
+    document.getElementById('green').onclick = clickHandler('green');
+
+</script>
+
+</html>
